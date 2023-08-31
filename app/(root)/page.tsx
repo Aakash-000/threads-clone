@@ -6,8 +6,9 @@ import { currentUser } from "@clerk/nextjs";
 
 export default async function Home() {
 
-  const result =  await fetchThreads(1,30)
   const user = await currentUser()
+  const result =  await fetchThreads(1,30)
+  
 
   console.log(result)
   return (
@@ -18,7 +19,7 @@ export default async function Home() {
           <p className="no-result">No Threads Found</p>
         ):(
           <>
-          {result.posts.map((post)=>(
+          {result.posts.map((post:any)=>(
             <ThreadCard 
             key={post._id}
             id={post._id}
